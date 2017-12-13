@@ -1,2 +1,2 @@
-# AwesomeMusic
+# MyMusicHub
 Database Final Project
