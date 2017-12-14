@@ -91,31 +91,5 @@
                 </div>
             </div>
         </div>
-	<div class="container">
-		<h2>Sample CSV data</h2>
-		<p>The data collected form a mock csv data is diaplayed here, the CSV
-			file can be seen here.</p>
-		<div class="table-responsive">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>AlbumId</th>
-						<th>AlbumName</th>
-						<th>AlbumReleaseDate</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($data as $item)
-					<tr>
-						<td>{{$item->AlbumId}}</td>
-						<td>{{$item->AlbumName}}</td>
-						<td>{{$item->AlbumReleaseDate}}</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
-		</div>
-	</div>
    </body>
 </html>
