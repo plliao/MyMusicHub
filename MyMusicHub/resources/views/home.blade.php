@@ -16,7 +16,13 @@
 
 		   <html>
     		     <body>
-                    	You are logged in!  Hello, {{ Auth::user()->name }}
+			<div class="search-container">
+   			 <form action="/action_page.php">
+      			 <input type="text" placeholder="Search.." name="search">
+      			 <input type="submit" value = "search">
+   			 </form>
+  		        </div>
+                    	Hello, {{ Auth::user()->name }}. You can search songs or artists here.
     	             </body>
 		   </html>
 		   <h3>User Information:</h3>
@@ -28,9 +34,13 @@
 			<li>City: <?php echo $row->city; ?></li>
     		   </ul>
 		   <?php }?>
-                </div>
+		   <nav>
+			<iframe src="https://open.spotify.com/embed?uri=spotify:track:4sPmO7WMQUAf45kwMOtONw" frameborder="0" allowtransparency="true"> </iframe>
+                   </nav>
+		</div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
