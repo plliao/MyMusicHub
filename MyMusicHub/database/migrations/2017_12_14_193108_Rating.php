@@ -15,10 +15,10 @@ class Rating extends Migration
     {
         //
 	Schema::create ( 'Rating', function (Blueprint $table) { 
-	$table->string ( 'username' );
-	$table->string ( 'TrackID' );
+	$table->string ( 'username', 45 );
+	$table->string ( 'TrackID', 22 );
 	$table->timestamps();
-	$table->integer( ' rating');
+	$table->integer( ' rating ');
 
 	$table->primary(array('username', 'TrackId'));
 	$table->foreign('username')->references('username')->on('users');

@@ -15,8 +15,8 @@ class Follower extends Migration
     {
         //
 	 Schema::create ( 'Follower', function (Blueprint $table) {
-         $table->string ( 'username' );
-         $table->string ( 'follower' );
+         $table->string ( 'username', 45 );
+         $table->string ( 'follower', 45 );
          $table->timestamps();
 
 	 $table->primary(array('username', 'follower'));

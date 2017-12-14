@@ -15,11 +15,12 @@ class Tracks extends Migration
     {
         //
 	Schema::create ( 'Tracks', function (Blueprint $table) { 
-	$table->string ( 'TrackId' )->primary();
-	$table->string ( 'TrackName' );
+	$table->string ( 'TrackId',22 )->primary();
+	$table->string ( 'TrackName',200 );
 	$table->integer( 'TrackDuration');
-	$table->string ( 'TrackArtist' );
+	$table->string ( 'TrackArtist', 22 );
 	$table->string ( 'AlbumId' );
+
 	$table->foreign('TrackArtist')->references('ArtistId')->on('Artists');	
 	$table->foreign('AlbumId')->references('AlbumId')->on('Albums');
     	});

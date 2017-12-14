@@ -15,10 +15,10 @@ class PlaybyAlbum extends Migration
     {
         //
 	Schema::create ( 'PlaybyAlbum', function (Blueprint $table) { 
-	$table->string ( 'username' );
-	$table->string ( 'TrackID' );
+	$table->string ( 'username',45 );
+	$table->string ( 'TrackID',22 );
 	$table->datetime( 'playtime');
-	$table->string ( 'AlbumId' );
+	$table->string ( 'AlbumId',22 );
 
 	$table->primary(array('username', 'TrackId', 'playtime'));
 	$table->foreign('username')->references('username')->on('users');

@@ -15,9 +15,9 @@ class Artists extends Migration
     {
         //
 	 Schema::create ( 'Artists', function (Blueprint $table) {
-         $table->string ( 'ArtistId' )->primary();
-         $table->string ( 'ArtistTitle' );
-         $table->string ( 'ArtistDescription' );
+         $table->string ( 'ArtistId',22 )->primary();
+         $table->string ( 'ArtistTitle',200 );
+         $table->string ( 'ArtistDescription',500 );
 	});
     }
 

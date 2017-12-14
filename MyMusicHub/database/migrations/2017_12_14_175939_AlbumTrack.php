@@ -15,9 +15,9 @@ class AlbumTrack extends Migration
     {
         //
         Schema::create('AlbumTrack', function (Blueprint $table) {
-            $table->string('AlbumId');
-            $table->string('TrackId');
-            $table->integer('AlbumOrder')->unique();
+            $table->string('AlbumId',22);
+            $table->string('TrackId',22);
+            $table->integer('AlbumOrder');
 		
 	    $table->primary(array('AlbumId', 'TrackId', 'AlbumOrder'));
 	    $table->foreign('AlbumId')->references('AlbumId')->on('Albums');

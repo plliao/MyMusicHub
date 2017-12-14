@@ -15,8 +15,8 @@ class PlaybyPlayList extends Migration
     {
         //
 	Schema::create ( 'PlaybyPlayList', function (Blueprint $table) { 
-	$table->string ( 'username' );
-	$table->string ( 'TrackID' );
+	$table->string ( 'username', 45 );
+	$table->string ( 'TrackID',22 );
 	$table->datetime( 'playtime');
 	$table->integer ( 'PlayListId' );
 

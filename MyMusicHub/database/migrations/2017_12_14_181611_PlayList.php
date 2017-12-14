@@ -16,8 +16,8 @@ class PlayList extends Migration
         //
 	Schema::create ( 'PlayList', function (Blueprint $table) { 
 	$table->integer ( 'PlayListId' )->primary();
-	$table->string ( 'username' );
-	$table->string( 'title');
+	$table->string ( 'username',45 );
+	$table->string( 'title', 200);
 	$table->date ( 'createDate' );
 	$table->boolean ( 'public' )->default(1);
 

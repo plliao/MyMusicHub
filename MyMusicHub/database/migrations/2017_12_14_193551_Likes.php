@@ -15,8 +15,8 @@ class Likes extends Migration
     {
         //
 	Schema::create ( 'Likes', function (Blueprint $table) { 
-	$table->string ( 'username' );
-	$table->string ( 'ArtistID' );
+	$table->string ( 'username',45 );
+	$table->string ( 'ArtistID',22 );
 	$table->timestamps();
 
 	$table->primary(array('username', 'ArtistId'));

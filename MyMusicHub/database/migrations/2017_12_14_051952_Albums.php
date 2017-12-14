@@ -15,8 +15,8 @@ class Albums extends Migration
     {
         //
 	 Schema::create ( 'Albums', function (Blueprint $table) {
-         $table->string ( 'AlbumId' )->primary();
-         $table->string ( 'AlbumName' );
+         $table->string ( 'AlbumId',22 )->primary();
+         $table->string ( 'AlbumName',200 );
          $table->date ( 'AlbumReleaseDate' );
 	 });
     }
