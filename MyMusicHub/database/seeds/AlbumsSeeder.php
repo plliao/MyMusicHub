@@ -8,7 +8,7 @@ class AlbumsSeeder extends CsvSeeder {
 
 	public function __construct()
 	{
-		$this->table = 'albums';
+		$this->table = 'Albums';
 		$this->csv_delimiter = ',';
 		$this->filename = base_path().'/database/seeds/csvs/albums2.csv';
 		$this->offset_rows = 1;
@@ -26,7 +26,7 @@ class AlbumsSeeder extends CsvSeeder {
 		DB::disableQueryLog();
 
 		// Uncomment the below to wipe the table clean before populating
-		DB::table($this->table)->truncate();
+		//DB::table($this->table)->truncate();
 
 		parent::run();
 	}
