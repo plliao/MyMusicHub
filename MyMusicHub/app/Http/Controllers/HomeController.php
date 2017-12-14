@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+	$username = Auth::user()->username ;
+	$userinfo = DB::select('select * from users where username = ?', [$username]);
+       	
+	return view('home', ['info'=> $userinfo]);
     }
 }
