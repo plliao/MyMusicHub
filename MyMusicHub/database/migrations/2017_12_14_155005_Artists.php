@@ -17,7 +17,7 @@ class Artists extends Migration
 	 Schema::create ( 'Artists', function ($table) {
          $table->string ( 'ArtistId' );
          $table->string ( 'ArtistTitle' );
-         $table->date ( 'ArtistDescription' );
+         $table->string ( 'ArtistDescription' );
 	});
     }
 
