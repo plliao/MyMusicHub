@@ -1,2 +1,0 @@
-# MyMusicHub
-Database Final Project
