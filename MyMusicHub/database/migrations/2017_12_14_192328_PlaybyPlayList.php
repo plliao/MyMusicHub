@@ -23,6 +23,7 @@ class PlaybyPlayList extends Migration
 	$table->primary(array('username', 'TrackId', 'playtime'));
 	$table->foreign('username')->references('username')->on('users');
 	$table->foreign('TrackId')->references('TrackId')->on('Tracks');
+    $table->foreign('PlayListId')->references('PlayListId')->on('PlayList');
     	});
     }
 
