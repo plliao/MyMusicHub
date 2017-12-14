@@ -48,7 +48,7 @@ def main() :
         'TrackArtist',
         'AlbumId',
         'ArtistId'
-    ]].dropna().to_csv('track3.csv', index=False)
+    ]].dropna().to_csv('tracks3.csv', index=False)
 
 if __name__ == "__main__":
     main()
