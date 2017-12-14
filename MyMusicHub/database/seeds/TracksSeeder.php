@@ -2,7 +2,7 @@
 
 use Flynsarmy\CsvSeeder\CsvSeeder;
 
-class TrackTableSeeder extends CsvSeeder
+class TracksSeeder extends CsvSeeder
 {
     public $insert_chunk_size = 1000;
 
@@ -20,7 +20,7 @@ class TrackTableSeeder extends CsvSeeder
         ];
 		$this->should_trim = true;
     }
-
+    
     public function run()
     {
         //
