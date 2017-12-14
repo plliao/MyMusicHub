@@ -17,10 +17,9 @@ class PlayListTrack extends Migration
 	Schema::create ( 'PlayListTrack', function (Blueprint $table) { 
 	$table->integer ( 'PlayListId' );
 	$table->string ( 'TrackID',22 );
-	$table->datetime( 'playtime');
-	$table->string ( 'AlbumId',22 );
+	$table->integer ( 'PlayListOrder' );
 
-	$table->primary(array('PlayListId', 'TrackId'));
+	$table->primary(array('PlayListId', 'TrackId', 'PlayListOrder'));
 	$table->foreign('PlayListId')->references('PlayListId')->on('PlayList');
 	$table->foreign('TrackId')->references('TrackId')->on('Tracks');
     	});
