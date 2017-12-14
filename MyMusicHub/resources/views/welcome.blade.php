@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    MyMusicHub
                 </div>
 
                 <div class="links">
