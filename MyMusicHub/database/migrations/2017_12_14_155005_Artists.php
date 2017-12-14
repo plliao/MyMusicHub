@@ -17,7 +17,7 @@ class Artists extends Migration
 	 Schema::create ( 'Artists', function (Blueprint $table) {
          $table->string ( 'ArtistId',22 )->primary();
          $table->string ( 'ArtistTitle',200 );
-         $table->string ( 'ArtistDescription',500 );
+         $table->string ( 'ArtistDescription',500 )->nullable();
 	});
     }
 
