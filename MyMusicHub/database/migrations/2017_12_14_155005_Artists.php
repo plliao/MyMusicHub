@@ -14,8 +14,8 @@ class Artists extends Migration
     public function up()
     {
         //
-	 Schema::create ( 'Artists', function ($table) {
-         $table->string ( 'ArtistId' );
+	 Schema::create ( 'Artists', function (Blueprint $table) {
+         $table->string ( 'ArtistId' )->primary();
          $table->string ( 'ArtistTitle' );
          $table->string ( 'ArtistDescription' );
 	});
@@ -29,5 +29,6 @@ class Artists extends Migration
     public function down()
     {
         //
+	Schema::dropIfExists('Artists');
     }
 }
