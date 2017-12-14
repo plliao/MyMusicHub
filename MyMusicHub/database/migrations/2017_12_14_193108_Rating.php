@@ -18,7 +18,7 @@ class Rating extends Migration
 	$table->string ( 'username', 45 );
 	$table->string ( 'TrackID', 22 );
 	$table->timestamps();
-	$table->integer( ' rating ');
+	$table->integer( 'rating');
 
 	$table->primary(array('username', 'TrackId'));
 	$table->foreign('username')->references('username')->on('users');
