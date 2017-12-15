@@ -25,5 +25,6 @@ Route::get('/result', function () {
 });
 Route::get('/TracksPage', 'ArtistController@show');
 Route::get('/playList', 'PlayListController@create');
+Route::get('/UserPage', 'UserPageController@show');
 Route::post('/playList', 'PlayListController@store')->name('playList');
 Route::post('/PlayerPage', 'PlayerController@store');

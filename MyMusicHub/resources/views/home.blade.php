@@ -67,6 +67,28 @@
 		</div>
             </div>
         </div>
+        <div id="sidebar" class="col-md-2">
+                <h3><center>
+                    Users
+                </h3></center>
+                <nav id="sidebar-nav">
+                    <ul class="nav nav-pills nav-stacked">
+                        <?php foreach( $all_other_users as $row){?>
+                            <li>
+                                {{ Html::linkAction(
+                                    'UserPageController@show', 
+                                    $row->username, 
+                                    array(
+                                        'userId' => $row->id, 
+                                        'userName' => $row->username
+                                    ) 
+                                   ) 
+                                }}
+                            </li>
+		                <?php }?>
+                    </ul>
+                </nav>
+        </div>
     </div>
 </div>
 @endsection
