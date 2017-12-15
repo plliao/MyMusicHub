@@ -1,5 +1,5 @@
-<?php
 
+<?php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,11 +7,6 @@ use DB;
 
 class ArtistController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     //
 	public function show(Request $request)
     	{
@@ -27,6 +22,6 @@ class ArtistController extends Controller
         	->orderBy('AlbumName','desc')
 		->get();
 
-        return view('TracksPage', ['result' => $trackinfo, 'artistname' => $artistname]);
+        	return view('TracksPage', ['result' => $trackinfo, 'artistname' => $artistname]);
   	}
 }
