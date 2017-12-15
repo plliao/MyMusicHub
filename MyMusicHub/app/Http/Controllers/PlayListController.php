@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\PlayList;
 use Auth;
+use DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -66,9 +67,20 @@ class PlayListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+	$Title = $request->input('Title');
+	$PlayListId = $request->input('PlayListId');
+	
+	$Tracks_in_List = DB::table('PlayListTrack')
+			  ->join('Tracks', 'Tracks.TrackId', '=', 'PlayListTrack.TrackId')
+			  ->join('Artists', 'Tracks.ArtistId', '=', 'Artists.ArtistId')
+			  ->where('PlayListId','=',[$PlayListId])
+			  ->get();
+	return view('playListShow', ['Title' => $Title,
+				 'PlayListId' => $PlayListId,
+				 'Tracks_in_List' =>  $Tracks_in_List]);
     }
 
     /**
