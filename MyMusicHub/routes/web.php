@@ -17,8 +17,8 @@ Route::get ( '/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('TracksPage', 'ArtistController@show');
-Route::get('PlayerPage', 'PlayerController@play');
+Route::get('/TracksPage', 'ArtistController@show');
+Route::get('/PlayerPage', 'PlayerController@play')->name('PlayerPage');
 Route::post('/result','SearchResultController@show');
 Route::get('/result', function () {
     return view('welcome');
@@ -26,3 +26,4 @@ Route::get('/result', function () {
 Route::get('/TracksPage', 'ArtistController@show');
 Route::get('/playList', 'PlayListController@create');
 Route::post('/playList', 'PlayListController@store')->name('playList');
+Route::post('/PlayerPage', 'PlayerController@store');
