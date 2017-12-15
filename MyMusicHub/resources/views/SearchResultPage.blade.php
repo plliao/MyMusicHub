@@ -17,7 +17,7 @@
 		   <?php foreach( $result as $row){?> 
 		   <ul>
 
-        		<li>ArtistTitle:{{ Html::linkAction('SearchResultController@show', $row->ArtistTitle) }}</li>
+        		<li>ArtistTitle:{{ Html::linkAction('ArtistController@show', $row->ArtistTitle, array('ArtistId' => $row->ArtistId, 'ArtistTitle' => $row->ArtistTitle) ) }}</li>
         		<li>ArtistDescription: <?php echo $row->ArtistDescription; ?></li>
     		   </ul>
 		   <?php }?>
