@@ -21,3 +21,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('form','SearchResultController@show');
+Route::get('TracksPage', 'ArtistController@show');
