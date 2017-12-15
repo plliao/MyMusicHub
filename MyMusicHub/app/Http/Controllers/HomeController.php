@@ -50,13 +50,15 @@ class HomeController extends Controller
     )->limit(
         10
     )->get();
-       	
+    
+    $all_other_users = DB::select('select * from users where username <> ?', [$username]);       	
 	return view(
         'home', 
         [
             'info' => $userinfo, 
             'playList' => $playList,
-            'artists' => $user_liked_artists
+            'artists' => $user_liked_artists,
+	    'all_other_users' => $all_other_users
         ]
     );
     }
