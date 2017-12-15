@@ -29,3 +29,4 @@ Route::get('/playListShow', 'PlayListController@show');
 Route::get('/UserPage', 'UserPageController@show');
 Route::post('/playList', 'PlayListController@store')->name('playList');
 Route::post('/PlayerPage', 'PlayerController@store');
+Route::post('/TrackRate', 'PlayerController@rate');

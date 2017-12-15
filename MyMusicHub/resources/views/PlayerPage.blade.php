@@ -11,6 +11,7 @@
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
+                        {{ session()->forget('status') }}
                     @endif
 		            <?php foreach( $TrackInfo as $data){?> 
 		                <h3><?php echo $data->TrackName;?>:</h3> 
@@ -20,6 +21,20 @@
                             frameborder="0" allowtransparency="true"> 
                         </iframe>
 		            <?php }?>
+                    <form class="form-horizontal" method="POST" action="{{ action('PlayerController@rate') }}">
+                        {{ csrf_field() }}
+                        Rate the track:
+                        <input id="rate" type="radio" name="rate" value=1>1</input>
+                        <input id="rate" type="radio" name="rate" value=2>2</input>
+                        <input id="rate" type="radio" name="rate" value=3>3</input>
+                        <input id="rate" type="radio" name="rate" value=4>4</input>
+                        <input id="rate" type="radio" name="rate" value=5>5</input>
+                        <input id="TrackId" type="hidden" name="TrackId" 
+                            value="{{ app('request')->input('TrackId') }}"/>
+                        <button type="submit" class="btn">
+                            Rate
+                        </button>
+                    </form>
                     @if (count($PlayList) > 0)
                         <form class="form-horizontal" method="POST" action="{{ action('PlayerController@store') }}">
                             {{ csrf_field() }}

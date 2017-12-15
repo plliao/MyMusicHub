@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Session;
+use App\Rating;
 use App\PlayListTrack;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -29,12 +31,23 @@ class PlayerController extends Controller
         )->where(
             'PlayList.username', '=', Auth::user()->username
         )->get();
+        
+        $rate = DB::table(
+            'Rating'
+        )->where(
+            'Rating.username', '=', Auth::user()->username
+        )->where(
+            'Rating.TrackId', '=', $TrackId
+        )->select(
+            'Rating.rating'
+        )->get();
 
         return view(
             'PlayerPage', 
             [
                 'TrackInfo' => $TrackInfo,
-                'PlayList'=> $Playlist
+                'PlayList'=> $Playlist,
+                'Rating' => $rate
             ]
         );
   	}
@@ -62,6 +75,23 @@ class PlayerController extends Controller
                 'PlayListOrder' => $order
             ]
         ); 
+        session(['status' => 'Track has been added.']);
+        return redirect()->route('PlayerPage', [ 'TrackId' => $data['TrackId']]);
+    }
+
+    public function rate(Request $request)
+    {
+		$data = Input::all();
+        //$rate = new Rating;
+
+        //print_r($rate->getKeyName());
+        $rate = Rating::firstOrNew(
+            ['username' => Auth::user()->username],
+            ['TrackId' => $data['TrackId']]
+        );
+        $rate->rating = $data['rate'];
+        $rate->save();
+        session(['status' => 'Rating has been updated.']);
         return redirect()->route('PlayerPage', [ 'TrackId' => $data['TrackId']]);
     }
 }
