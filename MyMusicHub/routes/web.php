@@ -24,3 +24,5 @@ Route::get('/result', function () {
     return view('welcome');
 });
 Route::get('/TracksPage', 'ArtistController@show');
+Route::get('/playList', 'PlayListController@create');
+Route::post('/playList', 'PlayListController@store')->name('playList');
