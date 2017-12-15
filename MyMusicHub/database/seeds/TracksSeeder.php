@@ -20,6 +20,25 @@ class TracksSeeder extends CsvSeeder
         ];
 		$this->should_trim = true;
     }
+
+    public function readRow( array $row, array $mapping )
+    {
+        $row_values = [];
+        foreach ($mapping as $csvCol => $dbCol) {
+            if (!isset($row[$csvCol]) || $row[$csvCol] === '') {
+                $row_values[$dbCol] = NULL;
+            }
+            else {
+                $row_values[$dbCol] = $this->should_trim ? trim($row[$csvCol]) : $row[$csvCol];
+            }
+            if (is_null($row_values[$dbCol])) 
+                return [];
+        }
+        if ($this->hashable && isset($row_values[$this->hashable])) {
+            $row_values[$this->hashable] =  Hash::make($row_values[$this->hashable]);
+        }
+        return $row_values;
+    }
     
     public function run()
     {
