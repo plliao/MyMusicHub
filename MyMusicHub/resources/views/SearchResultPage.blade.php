@@ -18,8 +18,10 @@
 		   <ul>
 
         		<li>ArtistTitle:{{ Html::linkAction('ArtistController@show', $row->ArtistTitle, array('ArtistId' => $row->ArtistId, 'ArtistTitle' => $row->ArtistTitle) ) }}</li>
-        		<li>ArtistDescription: <?php echo $row->ArtistDescription; ?></li>
-    		   </ul>
+			<ul>
+        			<li>ArtistDescription: <?php echo $row->ArtistDescription; ?></li>
+    		   	</ul>
+		    </ul>
 		   <?php }?>
 		</div>
             </div>
