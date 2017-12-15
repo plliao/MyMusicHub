@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-		   <h3>Searching Results:</h3>
+		   <h3>Artists Searching Results:</h3>
 		   <?php foreach( $result as $row){?> 
 		   <ul>
 
@@ -21,6 +21,26 @@
 			<ul>
         			<li>ArtistDescription: <?php echo $row->ArtistDescription; ?></li>
     		   	</ul>
+		    </ul>
+		   <?php }?>
+
+		   <h3>Tracks Searching Results:</h3>
+		   <?php foreach( $tracks as $row){?> 
+		   <ul>
+
+        		<li>TrackTitle:{{ Html::linkAction('PlayerController@play', $row->TrackName, array('TrackId' => $row->TrackId) ) }}</li>
+			<ul>
+        			<li>Duration: <?php echo date('i:s',$row->TrackDuration/1000); ?></li>
+    		   	</ul>
+		    </ul>
+		   <?php }?>
+
+		
+		   <h3>Users Searching Results:</h3>
+		   <?php foreach( $users as $row){?> 
+		   <ul>
+
+        		<li>UserName:{{ Html::linkAction('UserPageController@show', $row->username, array('userId' => $row->id, 'userName' => $row->username) ) }}</li>
 		    </ul>
 		   <?php }?>
 		</div>
