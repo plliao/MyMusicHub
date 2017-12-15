@@ -35,10 +35,12 @@ def main() :
 
     data = track.join(
         artist.set_index('ArtistTitle'),
-        on='TrackArtist'
+        on='TrackArtist',
+        how='inner'
     ).join(
         album.set_index('AlbumId'),
-        on='AlbumId'
+        on='AlbumId',
+        how='inner'
     )
 
     data[[
