@@ -18,7 +18,7 @@
 		   <?php foreach( $result as $row){?> 
 		   <ul>
 
-        		<li>TrackName:{{ Html::linkAction('SearchResultController@show', $row->TrackName, array('TrackName' => $row->TrackName) ) }}</li>
+        		<li>TrackName:{{ Html::linkAction('PlayerController@play', $row->TrackName, array('TrackId' => $row->TrackId) ) }}</li>
         		    <ul>
 				<li>From Album: <?php echo $row->AlbumName;?></li>
 				<li>Album Release Date: <?php echo $row->AlbumReleaseDate;?></li>
