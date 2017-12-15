@@ -41,7 +41,7 @@
     	    {{ Form::text('keyword')}}
    			{{ Form::submit('Search')}}
 			{{ Form::close()}}
-            Hello, {{ Auth::user()->name }}. You can search songs or artists here.
+            Hello, {{ Auth::user()->name }}. Search songs, artists or users here.
 		     	</div>
 		   <h3>User Information:</h3>
 		   <?php foreach( $info as $row){?> 
@@ -59,7 +59,17 @@
                 @endif
                 <?php foreach( $playList as $row){?>
                     <ul>
-                        <li><?php echo $row->title;?></li>
+                        <li>
+                            {{ Html::linkAction(
+                                  'PlayListController@show', 
+                                  $row->title, 
+                                  array(
+                                        'Title' => $row->title, 
+                                        'PlayListId' => $row->PlayListId
+                                    ) 
+                                  ) 
+                             }}  ,Created Date: <?php echo $row->createDate;?>
+                        </li>
                     </ul>
                 <?php }?>
             </div>
