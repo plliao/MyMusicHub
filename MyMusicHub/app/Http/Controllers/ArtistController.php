@@ -27,6 +27,6 @@ class ArtistController extends Controller
         	->orderBy('AlbumName','desc')
 		->get();
 
-        	return view('TracksPage', ['result' => $trackinfo, 'artistname' => $artistname]);
+        return view('TracksPage', ['result' => $trackinfo, 'artistname' => $artistname]);
   	}
 }
