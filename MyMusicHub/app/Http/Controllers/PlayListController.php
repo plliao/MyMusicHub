@@ -78,7 +78,7 @@ class PlayListController extends Controller
 			  ->join('Artists', 'Tracks.ArtistId', '=', 'Artists.ArtistId')
 			  ->where('PlayListId','=',[$PlayListId])
 			  ->get();
-	return view('playListShow', ['Title' => $Title,
+	return view('PlayListShow', ['Title' => $Title,
 				 'PlayListId' => $PlayListId,
 				 'Tracks_in_List' =>  $Tracks_in_List]);
     }
