@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -16,14 +15,14 @@
 
 		   <html>
     		     <body>
-			<div class="search-container">
-   			 <form action="/action_page.php">
-      			 <input type="text" placeholder="Search.." name="search">
-      			 <input type="submit" value = "search">
-   			 </form>
-  		        </div>
+			<div> 
+			{{ Form::open(array('action'=> 'SearchResultController@show' , 'method'=>'post'))}}
+    			{{ Form::text('keyword')}}
+   			{{ Form::submit('Search')}}
+			{{ Form::close()}}
                     	Hello, {{ Auth::user()->name }}. You can search songs or artists here.
-    	             </body>
+		     	</div>
+		      </body>
 		   </html>
 		   <h3>User Information:</h3>
 		   <?php foreach( $info as $row){?> 
