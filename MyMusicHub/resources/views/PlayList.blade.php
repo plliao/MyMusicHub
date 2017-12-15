@@ -28,7 +28,7 @@
                         <div class="form-group{{ $errors->has('public') ? ' has-error' : '' }}">
                             <label for="public" class="col-md-4 control-label">Public</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-1">
                                 <input id="public" type="checkbox" class="form-control" name="public" value="{{ old('public') }}"checked>
                             </div>
                         </div>
