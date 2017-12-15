@@ -24,11 +24,15 @@
                     <form class="form-horizontal" method="POST" action="{{ action('PlayerController@rate') }}">
                         {{ csrf_field() }}
                         Rate the track:
-                        <input id="rate" type="radio" name="rate" value=1>1</input>
-                        <input id="rate" type="radio" name="rate" value=2>2</input>
-                        <input id="rate" type="radio" name="rate" value=3>3</input>
-                        <input id="rate" type="radio" name="rate" value=4>4</input>
-                        <input id="rate" type="radio" name="rate" value=5>5</input>
+                        <?php foreach (range(1, 5) as $number) {?> 
+                            <input id="rate" type="radio" name="rate" value=
+                                <?php 
+                                    echo $number;
+                                    if (!$Rating->isEmpty() and $Rating->first()->rating==$number)
+                                        echo " checked";
+                                ?>><?php echo $number;?>
+                            </input>
+                        <?php }?>
                         <input id="TrackId" type="hidden" name="TrackId" 
                             value="{{ app('request')->input('TrackId') }}"/>
                         <button type="submit" class="btn">
