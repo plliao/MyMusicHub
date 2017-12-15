@@ -25,6 +25,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('public') ? ' has-error' : '' }}">
+                            <label for="public" class="col-md-4 control-label">Public</label>
+
+                            <div class="col-md-6">
+                                <input id="public" type="checkbox" class="form-control" name="public" value="{{ old('public') }}"checked>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
