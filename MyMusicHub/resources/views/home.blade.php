@@ -9,9 +9,17 @@
                 <nav id="sidebar-nav">
                     <ul class="nav nav-pills nav-stacked">
                         <?php foreach( $artists as $row){?>
-                            <li><a href="
-                                <?php echo "/TracksPage?ArtistId=" . $row->ArtistId . "&ArtistTitle=" . $row->ArtistTitle?>
-                            "><?php echo $row->ArtistTitle?></a></li>
+                            <li>
+                                {{ Html::linkAction(
+                                    'ArtistController@show', 
+                                    $row->ArtistTitle, 
+                                    array(
+                                        'ArtistId' => $row->ArtistId, 
+                                        'ArtistTitle' => $row->ArtistTitle
+                                    ) 
+                                   ) 
+                                }}
+                            </li>
 		                <?php }?>
                     </ul>
                 </nav>
