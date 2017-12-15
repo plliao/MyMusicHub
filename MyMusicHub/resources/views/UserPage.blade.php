@@ -16,7 +16,8 @@
 		   <?php foreach( $playList as $row){?> 
 		         <ul>
 		   	   <li>
-			      Title:{{ Html::linkAction('UserPageController@show', $row->title, array('PlayListId' => $row->PlayListId) ) }}
+			      Title:{{ Html::linkAction('PlayListController@show', $row->title, array('PlayListId' => $row->PlayListId,
+			   'Title' => $row->title) ) }}
 			   </li>
 				<ul>
 				    <li>
