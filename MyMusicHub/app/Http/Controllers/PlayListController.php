@@ -32,12 +32,6 @@ class PlayListController extends Controller
     public function create()
     {
         //
-        /*return PlayList::create([
-            'username' => $data['username'],
-            'title' => $data['title'],
-            'createDate' => date(),
-            'public' => $data['public']
-        ]);*/
         return view('PlayList');
     
     }
@@ -109,12 +103,5 @@ class PlayListController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'title' => 'required|string|max:200',
-        ]);
     }
 }
