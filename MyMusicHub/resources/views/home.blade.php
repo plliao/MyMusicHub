@@ -9,7 +9,9 @@
                 <nav id="sidebar-nav">
                     <ul class="nav nav-pills nav-stacked">
                         <?php foreach( $artists as $row){?>
-                            <li><a href="#"><?php echo $row->ArtistTitle?></a></li>
+                            <li><a href="
+                                <?php echo "/TracksPage?ArtistId=" . $row->ArtistId . "&ArtistTitle=" . $row->ArtistTitle?>
+                            "><?php echo $row->ArtistTitle?></a></li>
 		                <?php }?>
                     </ul>
                 </nav>

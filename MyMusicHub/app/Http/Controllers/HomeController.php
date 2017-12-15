@@ -30,7 +30,7 @@ class HomeController extends Controller
     $popular_artists = DB::table('Artists')->leftjoin(
         'Likes', 'Artists.ArtistId', '=', 'Likes.ArtistId'
     )->select(
-        'Artists.ArtistTitle'
+        'Artists.ArtistId', 'Artists.ArtistTitle'
     )->groupBy(
         'Artists.ArtistId', 'Artists.ArtistTitle'
     )->orderBy(
@@ -44,7 +44,7 @@ class HomeController extends Controller
     )->where(
         'Likes.username', '=', $username
     )->select(
-        'Artists.ArtistTitle'
+        'Artists.ArtistId', 'Artists.ArtistTitle'
     )->union(
         $popular_artists
     )->limit(
