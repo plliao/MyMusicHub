@@ -82,16 +82,48 @@ class PlayerController extends Controller
     public function rate(Request $request)
     {
 		$data = Input::all();
-        //$rate = new Rating;
+        $rate = DB::table(
+            'Rating'
+        )->where(
+            'Rating.username', '=', Auth::user()->username
+        )->where(
+            'Rating.TrackId', '=', $data['TrackId']
+        )->select(
+            'Rating.rating'
+        )->get();
 
-        //print_r($rate->getKeyName());
-        $rate = Rating::firstOrNew(
-            ['username' => Auth::user()->username],
-            ['TrackId' => $data['TrackId']]
-        );
-        $rate->rating = $data['rate'];
-        $rate->save();
-        session(['status' => 'Rating has been updated.']);
+        if ($rate->isEmpty()) 
+        {
+            DB::table(
+                'Rating'
+            )->insert(
+                [
+                    'username' => Auth::user()->username,
+                    'TrackId' => $data['TrackId'],
+                    'rating' => $data['rate'],
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+            session(['status' => 'Rating has been added.']);
+        }
+        else 
+        {
+            DB::table(
+                'Rating'
+            )->where(
+                'Rating.username', '=', Auth::user()->username
+            )->where(
+                'Rating.TrackId', '=', $data['TrackId']
+            )->update(
+                [
+                    'rating' => $data['rate'], 
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]
+            );
+            session(['status' => 'Rating has been updated.']);
+        }
+
         return redirect()->route('PlayerPage', [ 'TrackId' => $data['TrackId']]);
     }
 }
