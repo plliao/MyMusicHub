@@ -16,7 +16,6 @@
 		   <h3>PlayList Title: <?php echo $Title?> </h3>
 		   <?php foreach($Tracks_in_List as $row){?> 
 		   <ul>
-
         		<li>Tile:{{ Html::linkAction('PlayerController@play', $row->TrackName, array('TrackId' => $row->TrackId) ) }}</li>
 			<ul>
         			<li>Duration: <?php echo date('i:s', $row->TrackDuration/1000); ?></li>
