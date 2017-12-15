@@ -19,8 +19,12 @@
 		   <ul>
 
         		<li>TrackName:{{ Html::linkAction('SearchResultController@show', $row->TrackName, array('TrackName' => $row->TrackName) ) }}</li>
-        		<li>Duration: <?php echo date('i:s', $row->TrackDuration/1000); ?></li>
-    		   </ul>
+        		    <ul>
+				<li>From Album: <?php echo $row->AlbumName;?></li>
+				<li>Album Release Date: <?php echo $row->AlbumReleaseDate;?></li>
+				<li>Duration: <?php echo date('i:s', $row->TrackDuration/1000); ?></li>
+    		   	    </ul>	
+		   </ul>
 		   <?php }?>
 		</div>
             </div>
