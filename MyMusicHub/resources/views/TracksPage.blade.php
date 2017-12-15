@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('content')
 <div class="container">
@@ -13,15 +14,17 @@
                         </div>
                     @endif
 
-		   <h3>Searching Results:</h3>
+		   <h3>Tracks For <?php echo $artistname;?>:</h3> 
 		   <?php foreach( $result as $row){?> 
 		   <ul>
 
-        		<li>ArtistTitle:{{ Html::linkAction('ArtistController@show', $row->ArtistTitle, array('ArtistId' => $row->ArtistId, 'ArtistTitle' => $row->ArtistTitle) ) }}</li>
-			<ul>
-        			<li>ArtistDescription: <?php echo $row->ArtistDescription; ?></li>
-    		   	</ul>
-		    </ul>
+        		<li>TrackName:{{ Html::linkAction('SearchResultController@show', $row->TrackName, array('TrackName' => $row->TrackName) ) }}</li>
+        		    <ul>
+				<li>From Album: <?php echo $row->AlbumName;?></li>
+				<li>Album Release Date: <?php echo $row->AlbumReleaseDate;?></li>
+				<li>Duration: <?php echo date('i:s', $row->TrackDuration/1000); ?></li>
+    		   	    </ul>	
+		   </ul>
 		   <?php }?>
 		</div>
             </div>
