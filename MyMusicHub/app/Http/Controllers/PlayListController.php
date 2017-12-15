@@ -53,14 +53,15 @@ class PlayListController extends Controller
         //
 		$data = Input::all();
         $playlist = new PlayList;
-        //if (!PlayList::count())
-        //    $playlist->PlayListId = 0;
-        //else
         $playlist->PlayListId = PlayList::count();
 
         $playlist->title = $data['title'];
         $playlist->createDate = date('Y-m-d H:i:s');
         $playlist->username = Auth::user()->username;
+        if (!array_key_exists("public", $data))
+        {
+            $playlist->public = 0;
+        }
         $playlist->save();
         return redirect()->route('home');
     }
