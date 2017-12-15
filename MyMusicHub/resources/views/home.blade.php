@@ -38,10 +38,10 @@
 
 			<div> 
 			{{ Form::open(array('action'=> 'SearchResultController@show' , 'method'=>'post'))}}
-    			{{ Form::text('keyword')}}
+    	    {{ Form::text('keyword')}}
    			{{ Form::submit('Search')}}
 			{{ Form::close()}}
-                    	Hello, {{ Auth::user()->name }}. You can search songs or artists here.
+            Hello, {{ Auth::user()->name }}. You can search songs or artists here.
 		     	</div>
 		   <h3>User Information:</h3>
 		   <?php foreach( $info as $row){?> 
@@ -54,8 +54,10 @@
 		   <?php }?>
 
             <div>
+                @if (count($playList) > 0)
+                    <h3>PlayList:</h3>
+                @endif
                 <?php foreach( $playList as $row){?>
-		            <h3>PlayList:</h3>
                     <ul>
                         <li><?php echo $row->title;?></li>
                     </ul>

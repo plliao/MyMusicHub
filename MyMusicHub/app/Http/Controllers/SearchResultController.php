@@ -8,13 +8,17 @@ use Illuminate\Support\Facades\Input;
 
 class SearchResultController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //
-	public function show()
-    	{
+	public function show(Request $request)
+    {
 		$data = Input::all();
 		$keyword = '%' . $data['keyword'] . '%';
 		$artists = DB::select('select * from Artists where ArtistTitle like ?', [$keyword]);
-
-        	return view('SearchResultPage', ['result' => $artists]);
+        return view('SearchResultPage', ['result' => $artists]);
   	}
 }

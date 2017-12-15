@@ -10,16 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','ArtistController@show');
-
 Route::get ( '/', function () {
-		
 	return view ( 'welcome' );
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('form','SearchResultController@show');
 Route::get('TracksPage', 'ArtistController@show');
 Route::get('PlayerPage', 'PlayerController@play');
+Route::post('/result','SearchResultController@show');
+Route::get('/result', function () {
+    return view('welcome');
+});
+Route::get('/TracksPage', 'ArtistController@show');
+Route::get('/playList', 'PlayListController@create');
+Route::post('/playList', 'PlayListController@store')->name('playList');

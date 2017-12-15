@@ -53,6 +53,13 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        {{ Html::linkAction(
+                                            'PlayListController@create', 
+                                            'Create PlayList'
+                                           ) 
+                                        }}
+                                    </li>
+                                    <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
