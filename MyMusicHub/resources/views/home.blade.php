@@ -89,7 +89,6 @@
                                     'UserPageController@show', 
                                     $row->username, 
                                     array(
-                                        'userId' => $row->id, 
                                         'userName' => $row->username
                                     ) 
                                    ) 

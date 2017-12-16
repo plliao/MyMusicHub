@@ -51,14 +51,38 @@ class HomeController extends Controller
         10
     )->get();
     
-    $all_other_users = DB::select('select * from users where username <> ?', [$username]);       	
+    $popular_users = DB::table('users')->leftjoin(
+        'Follower', 'users.username', '=', 'Follower.username'
+    )->select(
+        'users.username'
+    )->where(
+        'users.username', '<>', $username
+    )->groupBy(
+        'users.username'
+    )->orderBy(
+        DB::raw('count(follower)', 'desc')
+    )->limit(
+        10
+    );
+    $user_followed_users = DB::table(
+        'Follower'
+    )->select(
+        'username'
+    )->where(
+        'follower', '=', $username
+    )->union(
+        $popular_users
+    )->limit(
+        10
+    )->get();
+
 	return view(
         'home', 
         [
             'info' => $userinfo, 
             'playList' => $playList,
             'artists' => $user_liked_artists,
-	    'all_other_users' => $all_other_users
+	        'all_other_users' => $user_followed_users
         ]
     );
     }
