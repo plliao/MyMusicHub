@@ -28,8 +28,15 @@
 		   <?php foreach( $tracks as $row){?> 
 		   <ul>
 
-        		<li>TrackTitle:{{ Html::linkAction('PlayerController@play', $row->TrackName, array('TrackId' => $row->TrackId) ) }}</li>
+        		<li>TrackTitle:{{ 
+                    Html::linkAction(
+                        'PlayerController@play', 
+                        $row->TrackName, 
+                        array('TrackId' => $row->TrackId, 'AlbumId' => $row->AlbumId) 
+                    ) 
+                    }}</li>
 			<ul>
+        			<li>Album: <?php echo $row->AlbumName; ?></li>
         			<li>Duration: <?php echo date('i:s',$row->TrackDuration/1000); ?></li>
     		   	</ul>
 		    </ul>
