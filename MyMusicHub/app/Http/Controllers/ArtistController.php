@@ -52,7 +52,21 @@ class ArtistController extends Controller
     public function like(Request $request)
     {
 		$data = Input::all();
-        if ($data['like']==1) 
+
+		$artistTitle = DB::select(
+            'select ArtistTitle from Artists where ArtistId = ?', 
+            [$data['ArtistId']]
+        )[0]->ArtistTitle;
+
+        $likes = DB::table(
+            'Likes'
+        )->where(
+            'Likes.username', '=', Auth::user()->username
+        )->where(
+            'Likes.ArtistId', '=', $data['ArtistId']
+        )->first();
+
+        if ($data['like']==1 and !$likes) 
         {
             DB::table(
                 'Likes'
@@ -64,9 +78,9 @@ class ArtistController extends Controller
                     'updated_at' => date('Y-m-d H:i:s')
                 ]
             );
-            session(['status' => 'You like '. $data['ArtistTitle'] . '!!']);
+            session(['status' => 'You like '. $artistTitle . '!!']);
         }
-        else 
+        else if ($data['like']==0 and $likes)
         {
             DB::table(
                 'Likes'
@@ -75,14 +89,14 @@ class ArtistController extends Controller
             )->where(
                 'Likes.ArtistId', '=', $data['ArtistId']
             )->delete();
-            session(['status' => 'You don\'t like '. $data['ArtistTitle'] . '!!']);
+            session(['status' => 'You don\'t like '. $artistTitle . '!!']);
         }
 
         return redirect()->route(
             'TracksPage', 
             [ 
                 'ArtistId' => $data['ArtistId'],
-                'ArtistTitle' => $data['ArtistTitle']
+                'ArtistTitle' => $artistTitle
             ]
         );
     }
