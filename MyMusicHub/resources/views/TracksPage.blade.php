@@ -25,8 +25,6 @@
                         {{ csrf_field() }}
                         <input id="ArtistId" type="hidden" name="ArtistId" 
                             value=<?php echo $artist->ArtistId; ?> />
-                        <input id="ArtistTitle" type="hidden" name="ArtistTitle" 
-                            value=<?php echo $artist->ArtistTitle; ?> />
                         <?php
                             if (!$likes->isEmpty())
                             {
