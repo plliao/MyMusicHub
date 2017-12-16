@@ -17,13 +17,13 @@ Route::get ( '/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/TracksPage', 'ArtistController@show');
+Route::get('/TracksPage', 'ArtistController@show')->name('TracksPage');
+Route::post('/TracksPage', 'ArtistController@like');
 Route::get('/PlayerPage', 'PlayerController@play')->name('PlayerPage');
 Route::post('/result','SearchResultController@show');
 Route::get('/result', function () {
     return view('welcome');
 });
-Route::get('/TracksPage', 'ArtistController@show');
 Route::get('/playList', 'PlayListController@create');
 Route::get('/PlayListShow', 'PlayListController@show');
 Route::get('/UserPage', 'UserPageController@show');
