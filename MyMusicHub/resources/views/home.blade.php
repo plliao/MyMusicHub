@@ -28,14 +28,12 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">My Music Hub</div>
-
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
-
 			<div> 
 			{{ Form::open(array('action'=> 'SearchResultController@show' , 'method'=>'post'))}}
     	    {{ Form::text('keyword')}}
@@ -72,6 +70,24 @@
                         </li>
                     </ul>
                 <?php }?>
+		   <h3>Play History by PlayList:</h3>
+		   <?php foreach( $PlaybyPlayList as $row){?> 
+		    <ul>
+        		<li>TrackName: <?php echo $row->TrackName; ?></li>
+        		<ul>
+				<li>PlayTime: <?php echo $row->playtime; ?></li>
+    	    		</ul>
+		   </ul>
+		   <?php }?>
+		   <h3>Play History by Album:</h3>
+		   <?php foreach( $PlaybyAlbum as $row){?> 
+		    <ul>
+        		<li>TrackName: <?php echo $row->TrackName; ?></li>
+        		<ul>
+				<li>PlayTime: <?php echo $row->playtime; ?></li>
+    	    		</ul>
+		   </ul>
+		   <?php }?>
             </div>
 
 		</div>
