@@ -70,21 +70,21 @@
                         </li>
                     </ul>
                 <?php }?>
-		   <h3>Play History by PlayList:</h3>
+		   <h3>Top 10 PlayLists:</h3>
 		   <?php foreach( $PlaybyPlayList as $row){?> 
 		    <ul>
-        		<li>TrackName: <?php echo $row->TrackName; ?></li>
+        		<li>Title: <?php echo $row->title; ?></li>
         		<ul>
-				<li>PlayTime: <?php echo $row->playtime; ?></li>
+				<li>PlayTimes: <?php echo $row->playtimes; ?></li>
     	    		</ul>
 		   </ul>
 		   <?php }?>
-		   <h3>Play History by Album:</h3>
+		   <h3>Top 10 Albums:</h3>
 		   <?php foreach( $PlaybyAlbum as $row){?> 
 		    <ul>
-        		<li>TrackName: <?php echo $row->TrackName; ?></li>
+        		<li>Title: <?php echo $row->AlbumName; ?></li>
         		<ul>
-				<li>PlayTime: <?php echo $row->playtime; ?></li>
+				<li>PlayTimes: <?php echo $row->playtimes; ?></li>
     	    		</ul>
 		   </ul>
 		   <?php }?>
