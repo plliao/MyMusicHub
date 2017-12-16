@@ -99,7 +99,7 @@ class HomeController extends Controller
             'info' => $userinfo, 
             'playList' => $playList,
             'artists' => $user_liked_artists,
-	    'all_other_users' => $user_followed_users
+	    'all_other_users' => $user_followed_users,
 	    'PlaybyPlayList' => $PlaybyPlayList,
 	    'PlaybyAlbum' => $PlaybyAlbum
         ]
