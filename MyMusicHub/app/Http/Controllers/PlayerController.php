@@ -20,7 +20,36 @@ class PlayerController extends Controller
     //
 	public function play(Request $request)
     {
+		
 		$TrackId = $request->input('TrackId');
+		$PlayListId = $request->input('PlayListId');
+		$AlbumId = $request->input('AlbumId');
+
+		if (!is_null($PlayListId)){
+			 DB::table(
+               		 'PlaybyPlayList'
+            		)->insert(
+                		[
+                    		 'username' => Auth::user()->username,
+                   		 'TrackId' => $TrackId,
+                   		 'playtime' => date('Y-m-d H:i:s'),
+                    		 'PlayListId' => $PlayListId
+                		]
+            		);
+		}
+		else if(!is_null($AlbumId)){
+			 DB::table(
+               		 'PlaybyAlbum'
+            		)->insert(
+                		[
+                    		 'username' => Auth::user()->username,
+                   		 'TrackId' => $TrackId,
+                   		 'playtime' => date('Y-m-d H:i:s'),
+                    		 'AlbumId' => $AlbumId
+                		]
+            		);
+		}
+		
         if (empty($TrackId))
             return redirect()->route('home');
 		$TrackInfo = DB::select('select * from Tracks where TrackId =?', [$TrackId]);
