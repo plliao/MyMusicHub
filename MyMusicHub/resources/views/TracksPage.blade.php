@@ -53,7 +53,7 @@
                                 Html::linkAction(
                                     'PlayerController@play', 
                                     $row->TrackName, 
-                                    array('TrackId' => $row->TrackId) 
+                                    array('TrackId' => $row->TrackId, 'AlbumId' => $row->AlbumId) 
                                 ) 
                             }}
                             </li>

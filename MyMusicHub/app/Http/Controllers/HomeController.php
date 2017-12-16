@@ -76,13 +76,32 @@ class HomeController extends Controller
         10
     )->get();
 
+    $PlaybyPlayList = DB::table('PlaybyPlayList')->join(
+	'Tracks', 'PlaybyPlayList.TrackID', '=', 'Tracks.TrackID'
+    )->orderBy(
+	'playtime' , 'desc'
+    )->limit(
+	10
+    )->get();
+	
+
+    $PlaybyAlbum = DB::table('PlaybyAlbum')->join(
+	'Tracks', 'PlaybyAlbum.TrackID', '=', 'Tracks.TrackID'
+    )->orderBy(
+	'playtime' , 'desc'
+    )->limit(
+	10
+    )->get();
+
 	return view(
         'home', 
         [
             'info' => $userinfo, 
             'playList' => $playList,
             'artists' => $user_liked_artists,
-	        'all_other_users' => $user_followed_users
+	    'all_other_users' => $user_followed_users
+	    'PlaybyPlayList' => $PlaybyPlayList,
+	    'PlaybyAlbum' => $PlaybyAlbum
         ]
     );
     }
