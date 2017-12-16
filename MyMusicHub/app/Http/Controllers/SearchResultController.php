@@ -19,10 +19,19 @@ class SearchResultController extends Controller
 		$data = Input::all();
 		$keyword = '%' . $data['keyword'] . '%';
 		$artists = DB::select('select * from Artists where ArtistTitle like ?', [$keyword]);
-		
-		$tracks = DB::select('select * from Tracks where TrackName like ?', [$keyword]);
-
 		$users = DB::select('select * from users where username like ?', [$keyword]);
+
+        $tracks = DB::table(
+            'Tracks'
+        )->join(
+            'AlbumTrack', 'Tracks.TrackId', '=', 'AlbumTrack.TrackId'
+        )->join(
+            'Albums', 'Albums.AlbumId', '=', 'AlbumTrack.AlbumId'
+        )->select(
+            'TrackName', 'Tracks.TrackId', 'Albums.AlbumId', 'AlbumName', 'TrackDuration'
+        )->where(
+            'TrackName', 'like', $keyword
+        )->get();
 
         return view('SearchResultPage', ['result' => $artists,
 					 'tracks' => $tracks,
