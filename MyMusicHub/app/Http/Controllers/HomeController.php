@@ -76,19 +76,26 @@ class HomeController extends Controller
         10
     )->get();
 
-    $PlaybyPlayList = DB::table('PlaybyPlayList')->join(
-	'Tracks', 'PlaybyPlayList.TrackID', '=', 'Tracks.TrackID'
+    $PlaybyPlayList = DB::table('PlaybyPlayList'
+    )->join('PlayList', 'PlaybyPlayList.PlayListId', '=', 'PlayList.PlayListId'
+    )->select(
+        DB::raw('count(playtime) as playtimes'), 'title'
+    )->where( 'public', '=', 1
+    )->groupBy( 'PlayList.PlayListId', 'title'
     )->orderBy(
-	'playtime' , 'desc'
+	'playtimes' , 'desc'
     )->limit(
 	10
     )->get();
 	
 
     $PlaybyAlbum = DB::table('PlaybyAlbum')->join(
-	'Tracks', 'PlaybyAlbum.TrackID', '=', 'Tracks.TrackID'
+	'Albums', 'PlaybyAlbum.AlbumID', '=', 'Albums.AlbumID'
+    )->select(
+	DB::raw('count(playtime) as playtimes'), 'AlbumName'
+    )->groupBy( 'Albums.AlbumId', 'AlbumName'
     )->orderBy(
-	'playtime' , 'desc'
+	'playtimes', 'desc'
     )->limit(
 	10
     )->get();
