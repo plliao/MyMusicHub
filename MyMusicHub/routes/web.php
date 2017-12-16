@@ -26,7 +26,8 @@ Route::get('/result', function () {
 });
 Route::get('/playList', 'PlayListController@create');
 Route::get('/PlayListShow', 'PlayListController@show');
-Route::get('/UserPage', 'UserPageController@show');
+Route::get('/UserPage', 'UserPageController@show')->name('UserPage');
+Route::post('/UserPage', 'UserPageController@follow');
 Route::post('/playList', 'PlayListController@store')->name('playList');
 Route::post('/PlayerPage', 'PlayerController@store');
 Route::post('/TrackRate', 'PlayerController@rate');
